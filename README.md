@@ -3,24 +3,22 @@
 ## userテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, foreign_key: true|
-|name|string|null: false|
+|name|string|index: true, null: false|
 |mail|string|null: false, unique: true|
 |password|string|null: false|
 
 ### Association
-- hasmany :comment
-- hasmany :user_group
+- has_many :comments
+- has_many :user_groups
+- has_many :groups, through: :user_groups
 
 ## commentテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, foreign_key: true|
 |text|text||
-|image|text||
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
-
+|image|string||
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -29,20 +27,18 @@
 ## groupテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false, foreign_key: true|
 |name|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|comment_id|integer|null: false, foreign_key: true|
 
 ### Association
-- hasmany :user_group
-- hasmany :comment
+- has_many :comments
+- has_many :user_groups
+- has_many :users, through: :user_groups
 
 ## user_groupテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
