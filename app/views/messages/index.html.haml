@@ -1,0 +1,67 @@
+.information
+  グループを編集しました
+
+.wrapper
+  .menu
+    .menu-header
+      .menu__box
+        .menu__box-user
+          こたこま
+        .menu__box-btn
+          =link_to "https://twitter.com/disacodeinfo/" do
+            = fa_icon 'edit', class: "menu__btn--new"
+            %span<>
+          =link_to "https://twitter.com/disacodemarcy" do
+            = fa_icon 'cog', class: "menu__btn--edit"
+    .group
+      .group__name
+        グループ1
+        .group__message
+          group1最新メッセージこたこまこたこまあああああああああああああああ
+      .group__name
+        グループ2
+        .group__message
+          group2最新メッセージ
+      .group__name
+        グループ3
+        .group__message
+          group3最新メッセージ
+      .group__name
+        グループ4
+        .group__message
+          group4最新メッセージ
+      .group__name
+        グループ5
+        .group__message
+          group5最新メッセージ
+
+  .main
+    .main-header
+      .main-header__title
+        こたこまグループ
+      .main-header__edit
+        Edit
+      .main-header__member
+        Member：こたこま
+      .contents
+        .contents__name
+          こたこま
+        .contents__date
+          2019/10/06(Sun) 20:30:00
+          .contents__message
+            test
+        .contents__name
+          こたこま
+        .contents__date
+          2019/10/06(Sun) 20:30:00
+          .contents__message
+            コメント内容
+      .form
+        %input{name: "message[content]", placeholder: "type a message", type: "text", class:"form__text"}/
+        %input{name: "message[image]", type: "file", id: "filesend", class: "form__file"}/
+        %form{action: "./filesend.cgi", enctype: "multipart/form-data", method: "post"}
+        %label
+          = fa_icon 'image',class: "form__image"
+          %input#filesend{name: "datafile", type: "file",class: "form__file"}/
+          %input{"data-disable-with" => "Send", name: "commit", type: "submit", value: "Send", class: "form__submit-btn"}/
+

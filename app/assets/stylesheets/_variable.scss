@@ -1,0 +1,20 @@
+$menu-color: #FFFFFF;
+$blue-color: #38AEF0;
+$black-color: #434A54;
+$menu-size: 16px;
+$main-width: calc(100vw - 300px);
+
+@mixin sidebar(){
+  width: 300px;
+  height: 100px;
+  margin: 0, auto;
+}
+
+@mixin border(){
+  border-bottom: solid 1px #eeeeee;
+}
+
+@mixin font-gray(){
+  font-size: 12px;
+  color: #999999;
+}
