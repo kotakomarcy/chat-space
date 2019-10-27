@@ -1,7 +1,7 @@
 .information{
   position: relative;
-  color: $menu-color;
-  background-color: $blue-color;
+  color: $white;
+  background-color: $blue;
   width: 100%;
   text-align: center;
 }
@@ -24,8 +24,8 @@
     position: absolute;
     float: right;
     font-size: 16px;
-    color: $blue-color;
-    border: solid 1px $blue-color;
+    color: $blue;
+    border: solid 1px $blue;
     line-height: 40px;
     height: 40px;
     padding: 0 20px;
@@ -47,7 +47,7 @@
     &__name{
       font-size: 16px;
       font-weight: bold;
-      color: $black-color;
+      color: $black;
       padding: 46px 10px 10px 40px;
       float: left;
     }
@@ -59,7 +59,7 @@
     }
       &__message{
         font-size: 14px;
-        color: $black-color;
+        color: $black;
         clear: both;
         padding: 0 0 4px 40px;
       }
@@ -69,15 +69,13 @@
 .menu{
   width: 300px;
   float: left;
+  color: $white;
   margin: 0;
   &__box{
     height: 100px;
     box-sizing: border-box;
     display: flex;
     background-color: #253141;
-    color: $menu-color;
-    size: $menu-size;
-    font-weight: bold;
     align-items: center;
   }
     &__box-user{
@@ -85,6 +83,7 @@
       text-align: left;
       float: left;
       justify-content: space-between;
+      font-weight: bold;
     }
     &__box-btn{
       display: list-item;
@@ -94,27 +93,34 @@
       padding: 0 15px;
       letter-spacing: 0.3rem;
       ::before{
-        color:$menu-color;
+        color:$white;
       }
     }
 }
 
-.group{
+.groups{
   @include sidebar;
   height: calc(100vh - 100px);
   background-color: #2f3e51;
-  color: $menu-color;
   overflow: scroll;
-  cursor: pointer;
-  &__name{
-    font-size: 15px;
-    padding: 20px;
+  color: $white;
+.group{
+  color: $white;
+  text-decoration: none;
+  ::before{
+    color:$white;
   }
-  &__message{
-    font-size: 11px;
-    padding: 5px 0 0 0;
+  padding: 20px;
+    &__name{
+      font-size: 15px;
+    }
+    &__message{
+      font-size: 11px;
+      padding: 5px 0 0 0;
+    }
   }
 }
+
 
 .form{
   width: $main-width;
@@ -129,7 +135,7 @@
     border: none;
     padding: 0 40px 0 10px;
     font-size :16px;
-    color: $black-color;  
+    color: $black;  
   }
     &__image{
       position: absolute;
@@ -142,8 +148,8 @@
       display: none;
     }
     &__submit-btn{
-      background-color: $blue-color;
-      color:#ffffff;
+      background-color: $blue;
+      color: $white;
       height: 50px;
       width: 100px;
       padding: 0 30px;

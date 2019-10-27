@@ -2,38 +2,7 @@
   グループを編集しました
 
 .wrapper
-  .menu
-    .menu-header
-      .menu__box
-        .menu__box-user
-          = current_user.name
-        .menu__box-btn
-          =link_to new_group_path do
-            = fa_icon 'edit', class: "menu__btn--new"
-            %span<>
-          = link_to edit_user_path(current_user) do
-            = fa_icon 'cog', class: "menu__btn--edit"
-    .group
-      .group__name
-        グループ1
-        .group__message
-          group1最新メッセージこたこまこたこまあああああああああああああああ
-      .group__name
-        グループ2
-        .group__message
-          group2最新メッセージ
-      .group__name
-        グループ3
-        .group__message
-          group3最新メッセージ
-      .group__name
-        グループ4
-        .group__message
-          group4最新メッセージ
-      .group__name
-        グループ5
-        .group__message
-          group5最新メッセージ
+  = render 'messages/menu'
 
   .main
     .main-header
