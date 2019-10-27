@@ -8,7 +8,7 @@
         .menu__box-user
           = current_user.name
         .menu__box-btn
-          =link_to "https://twitter.com/disacodeinfo/" do
+          =link_to new_group_path do
             = fa_icon 'edit', class: "menu__btn--new"
             %span<>
           = link_to edit_user_path(current_user) do
