@@ -1,7 +1,7 @@
 .information{
   position: relative;
-  color: $menu-color;
-  background-color: $blue-color;
+  color: $white;
+  background-color: $blue;
   width: 100%;
   text-align: center;
 }
@@ -24,8 +24,8 @@
     position: absolute;
     float: right;
     font-size: 16px;
-    color: $blue-color;
-    border: solid 1px $blue-color;
+    color: $blue;
+    border: solid 1px $blue;
     line-height: 40px;
     height: 40px;
     padding: 0 20px;
@@ -38,16 +38,16 @@
     @include border;
     padding: 0 40px 1px;
   }
-  .contents{
+  .message{
     overflow: scroll;
     display: block;
     width: $main-width;
     height: calc(100vh - 190px);
     background-color: #fafafa;
-    &__name{
+    &__user-name{
       font-size: 16px;
       font-weight: bold;
-      color: $black-color;
+      color: $black;
       padding: 46px 10px 10px 40px;
       float: left;
     }
@@ -57,27 +57,66 @@
       align-items: center;
       padding-top: 46px;
     }
-      &__message{
+      &__lower{
         font-size: 14px;
-        color: $black-color;
+        color: $black;
         clear: both;
         padding: 0 0 4px 40px;
       }
+  }
+  .form{
+    width: $main-width;
+    box-sizing: border-box;
+    height: 90px;
+    padding: 20px 40px;
+    background-color: #ddd;
+
+    &__message{
+      height: 50px;
+      width: calc(100% - 132px);
+      border: none;
+      padding: 0 7px 0 10px;
+      font-size :16px;
+      color: $black;
+    }
+
+    &__icon{
+      position: absolute;
+      font-size: 1.3rem;
+      bottom: 10px;
+      right: 165px;
+      cursor: pointer;
+    }
+
+    &__hidden{
+      display: none;
+      width: 0;
+      }
+
+    &__submit-btn{
+      position: absolute;
+      width: 100px;
+      height: 50px;
+      padding: 0 30px;
+      bottom: -4px;
+      right: 40px;
+      background-color: $blue;
+      color: $white;
+      cursor: pointer;
+    }
   }
 }
 
 .menu{
   width: 300px;
   float: left;
+  color: $white;
   margin: 0;
   &__box{
     height: 100px;
     box-sizing: border-box;
     display: flex;
     background-color: #253141;
-    color: $menu-color;
-    size: $menu-size;
-    font-weight: bold;
     align-items: center;
   }
     &__box-user{
@@ -85,6 +124,7 @@
       text-align: left;
       float: left;
       justify-content: space-between;
+      font-weight: bold;
     }
     &__box-btn{
       display: list-item;
@@ -94,60 +134,30 @@
       padding: 0 15px;
       letter-spacing: 0.3rem;
       ::before{
-        color:$menu-color;
+        color:$white;
       }
     }
 }
 
-.group{
+.groups{
   @include sidebar;
   height: calc(100vh - 100px);
   background-color: #2f3e51;
-  color: $menu-color;
   overflow: scroll;
-  cursor: pointer;
-  &__name{
-    font-size: 15px;
-    padding: 20px;
+  color: $white;
+.group{
+  color: $white;
+  text-decoration: none;
+  ::before{
+    color:$white;
   }
-  &__message{
-    font-size: 11px;
-    padding: 5px 0 0 0;
+  padding: 20px;
+    &__name{
+      font-size: 15px;
+    }
+    &__message{
+      font-size: 11px;
+      padding: 5px 0 0 0;
+    }
   }
-}
-
-.form{
-  width: $main-width;
-  box-sizing: border-box;
-  height: 90px;
-  padding: 20px 40px;
-  background-color: #ddd;
-  display: flex;
-  &__text{
-    height: 50px;
-    width: 100%;
-    border: none;
-    padding: 0 40px 0 10px;
-    font-size :16px;
-    color: $black-color;  
-  }
-    &__image{
-      position: absolute;
-      font-size: 1.3rem;
-      bottom: 10px;
-      right: 165px;
-      cursor: pointer;
-    }
-    &__file{
-      display: none;
-    }
-    &__submit-btn{
-      background-color: $blue-color;
-      color:#ffffff;
-      height: 50px;
-      width: 100px;
-      padding: 0 30px;
-      margin-left: 15px;
-      cursor: pointer;
-    }
 }
