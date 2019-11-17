@@ -1,3 +1,4 @@
+# json.(@message, :content, :image)
 json.content  @message.content
 json.image @message.image.url
 json.id  @message.id
