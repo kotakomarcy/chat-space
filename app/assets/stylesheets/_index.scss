@@ -24,47 +24,57 @@
     position: absolute;
     float: right;
     font-size: 16px;
-    color: $blue;
     border: solid 1px $blue;
     line-height: 40px;
     height: 40px;
     padding: 0 20px;
     margin: -50px 0 0 auto;
     right: 40px;
+    color: $blue;
+    text-decoration: none;
     cursor: pointer;
+  }
+  .btn{
+    color: $blue;
+    text-decoration: none;
   }
   &__member{
     @include font-gray;
     @include border;
     padding: 0 40px 1px;
   }
-  .message{
-    overflow: scroll;
-    display: inline-block;
-    width: $main-width;
-    height: calc(100vh - 196px);
+  .messages{
+    max-height: calc(100vh - 190px);
+    min-height: calc(100vh - 190px);
     background-color: #fafafa;
-    &__user-name{
-      height: 20px;
-      font-size: 16px;
-      font-weight: bold;
-      color: $black;
-      padding: 46px 10px 10px 40px;
-      float: left;
-    }
-      &__date{
-        font-size: 12px;
-        color: #999999;
-        align-items: center;
-        padding-top: 46px;
-      }
-        &__lower{
-          font-size: 14px;
+    overflow: scroll;
+    box-sizing: border-box;
+    padding-bottom: 92px;
+    .message{
+      box-sizing: border-box;
+      padding: 46px 0 4px 40px;
+      .upper-message{
+        display: flex;
+        &__user-name{
+          display: flex;
+          font-size: 16px;
+          font-weight: bold;
           color: $black;
-          clear: both;
-          padding: 0 0 4px 40px;
+          padding: 0 10px 10px 0;
         }
+        &__date{
+          font-size: 12px;
+          color: $gray;
+          align-items: center;
+        }
+      }
+      .lower-message{
+        font-size: 14px;
+        color: $black;
+      }
+    }
   }
+
   .form{
     width: $main-width;
     box-sizing: border-box;
@@ -72,7 +82,6 @@
     padding: 20px 40px;
     background-color: #ddd;
     position: relative;
-
     &__message{
       height: 50px;
       width: calc(100% - 132px);
@@ -81,7 +90,6 @@
       font-size :16px;
       color: $black;
     }
-
     &__icon{
       position: absolute;
       font-size: 1.3rem;
@@ -89,12 +97,10 @@
       right: 165px;
       cursor: pointer;
     }
-
     &__hidden{
       display: none;
       width: 0;
       }
-
     &__submit-btn{
       position: absolute;
       width: 100px;
@@ -146,7 +152,6 @@
   height: calc(100vh - 100px);
   background-color: #2f3e51;
   overflow: scroll;
-  color: $white;
 .group{
   color: $white;
   padding: 20px;

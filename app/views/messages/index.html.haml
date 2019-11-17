@@ -7,12 +7,13 @@
   .main
     .main-header
       .main-header__title
-        こたこまグループ
+        = @group.name
       .main-header__edit
-        Edit
+        =link_to 'Edit', 'edit', class: 'btn'
       .main-header__member
-        Member：こたこま
-      .message
+        Member：
+        = current_user.name
+      .messages
         = render @messages
       .form
         = form_for [@group, @message] do |f|
