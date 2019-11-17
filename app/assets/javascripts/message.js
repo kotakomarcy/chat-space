@@ -1,9 +1,7 @@
 $(document).on('turbolinks:load', function(){
   // 非同期通信
   function buildHTML(message){
-    var content = message.content ? `${ message.content }` : "";
-    var img = (message.image) ? `<img class="lower-message__image" src= ${ message.image }>` : "";
-    if (content && img) {
+    if (message.content && message.image) {
       var html = `<div class= "message", data-message-id="${message.id}">
                     <div class="upper-message">
                       <div class="upper-message__user-name">
@@ -14,13 +12,13 @@ $(document).on('turbolinks:load', function(){
                         </div>
                       </div>
                     <div class="lower-message">
-                        ${content}
+                        ${message.content}
                         </div>
                       <div class="lower-message__image">
-                        ${img}
+                        ${message.image}
                         </div>
                     </div>`
-    } else if (content) {
+    } else if (message.content) {
       var html = `<div class= "message", data-message-id="${message.id}">
                     <div class="upper-message">
                       <div class="upper-message__user-name">
@@ -31,10 +29,10 @@ $(document).on('turbolinks:load', function(){
                         </div>
                       </div>
                     <div class="lower-message">
-                        ${content}
+                        ${message.content}
                         </div>
                     </div>`
-    } else if (img) {
+    } else if (message.image) {
       var html = `<div class= "message", data-message-id="${message.id}">
                     <div class="upper-message">
                       <div class="upper-message__user-name">
@@ -46,7 +44,7 @@ $(document).on('turbolinks:load', function(){
                       </div>
                     <div class="lower-message">
                       <div class="lower-message__image">
-                        ${img}
+                        ${message.image}
                         </div>
                     </div>`
     };
