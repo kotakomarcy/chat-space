@@ -1,7 +1,8 @@
 $(document).on('turbolinks:load', function(){
   // 非同期通信
   function buildHTML(message){
-    if (message.content && message.image) {
+    var content = message.content ? `${ message.content }` : "";
+    var img = (message.image) ? `<img class="lower-message__image" src= ${ message.image }>` : "";
       var html = `<div class= "message", data-message-id="${message.id}">
                     <div class="upper-message">
                       <div class="upper-message__user-name">
@@ -12,42 +13,12 @@ $(document).on('turbolinks:load', function(){
                         </div>
                       </div>
                     <div class="lower-message">
-                        ${message.content}
+                        ${content}
                         </div>
                       <div class="lower-message__image">
-                        ${message.image}
+                        ${img}
                         </div>
                     </div>`
-    } else if (message.content) {
-      var html = `<div class= "message", data-message-id="${message.id}">
-                    <div class="upper-message">
-                      <div class="upper-message__user-name">
-                        ${message.user_name}
-                        </div>
-                      <div class="upper-message__date">
-                        ${message.date}
-                        </div>
-                      </div>
-                    <div class="lower-message">
-                        ${message.content}
-                        </div>
-                    </div>`
-    } else if (message.image) {
-      var html = `<div class= "message", data-message-id="${message.id}">
-                    <div class="upper-message">
-                      <div class="upper-message__user-name">
-                        ${message.user_name}
-                        </div>
-                      <div class="upper-message__date">
-                        ${message.date}
-                        </div>
-                      </div>
-                    <div class="lower-message">
-                      <div class="lower-message__image">
-                        ${message.image}
-                        </div>
-                    </div>`
-    };
     return html;
   }
   $('#new_message').on('submit', function(e){
