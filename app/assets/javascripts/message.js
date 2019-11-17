@@ -49,28 +49,28 @@ $(document).on('turbolinks:load', function(){
   // 自動更新
   $(function(){
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
-    var reloadMessages = function() {
-      last_message_id = $('.message:last').data("message-id");
-        $.ajax({
-          url: "api/messages",
-          type: 'GET',
-          dataType: 'json',
-          data: {last_id: last_message_id}
-        })
-        .done(function(messages) {
-          var insertHTML = '';
-            // 取得メッセージを一つずつ抽出
-            messages.forEach(function(message){
-              insertHTML = buildHTML(message);
-              $('.messages').append(insertHTML);
-            })
-            $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight}, 'fast');
-        })
-        .fail(function() {
-          alert('自動更新に失敗しました');
-        });
-      }
-    setInterval(reloadMessages, 7000);
+      var reloadMessages = function() {
+        last_message_id = $('.message:last').data("message-id");
+          $.ajax({
+            url: "api/messages",
+            type: 'GET',
+            dataType: 'json',
+            data: {last_id: last_message_id}
+          })
+          .done(function(messages) {
+            var insertHTML = '';
+              // 取得メッセージを一つずつ抽出
+              messages.forEach(function(message){
+                insertHTML = buildHTML(message);
+                $('.messages').append(insertHTML);
+              })
+              $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+          })
+          .fail(function() {
+            alert('自動更新に失敗しました');
+          });
+        }
+      setInterval(reloadMessages, 7000);
     };
   })
 });
