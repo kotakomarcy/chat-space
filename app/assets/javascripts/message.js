@@ -3,23 +3,54 @@ $(document).on('turbolinks:load', function(){
   function buildHTML(message){
     var content = message.content ? `${ message.content }` : "";
     var img = (message.image) ? `<img class="lower-message__image" src= ${ message.image }>` : "";
-    var html = `<div class= "message", data-message-id="${message.id}">
-                  <div class="upper-message">
-                    <div class="upper-message__user-name">
-                      ${message.user_name}
+    if (content && img) {
+      var html = `<div class= "message", data-message-id="${message.id}">
+                    <div class="upper-message">
+                      <div class="upper-message__user-name">
+                        ${message.user_name}
+                        </div>
+                      <div class="upper-message__date">
+                        ${message.date}
+                        </div>
                       </div>
-                    <div class="upper-message__date">
-                      ${message.date}
+                    <div class="lower-message">
+                        ${content}
+                        </div>
+                      <div class="lower-message__image">
+                        ${img}
+                        </div>
+                    </div>`
+    } else if (content) {
+      var html = `<div class= "message", data-message-id="${message.id}">
+                    <div class="upper-message">
+                      <div class="upper-message__user-name">
+                        ${message.user_name}
+                        </div>
+                      <div class="upper-message__date">
+                        ${message.date}
+                        </div>
                       </div>
-                    </div>
-                  <div class="lower-message">
-                      ${content}
+                    <div class="lower-message">
+                        ${content}
+                        </div>
+                    </div>`
+    } else if (img) {
+      var html = `<div class= "message", data-message-id="${message.id}">
+                    <div class="upper-message">
+                      <div class="upper-message__user-name">
+                        ${message.user_name}
+                        </div>
+                      <div class="upper-message__date">
+                        ${message.date}
+                        </div>
                       </div>
-                    <div class="lower-message__image">
-                      ${img}
-                      </div>
-                  </div>`
-    $('.messages').append(html);
+                    <div class="lower-message">
+                      <div class="lower-message__image">
+                        ${img}
+                        </div>
+                    </div>`
+    };
+    return html;
   }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
@@ -49,59 +80,6 @@ $(document).on('turbolinks:load', function(){
   // 自動更新
   $(function(){
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
-      buildMessageHTML = function(message) {
-      if (message.content && message.image.url) {
-        var img = (message.image) ? `<img class="lower-message__image" src= ${ message.image }>` : "";
-        var html = `<div class= "message", data-message-id="${message.id}">
-                      <div class="upper-message">
-                        <div class="upper-message__user-name">
-                          ${message.user_name}
-                          </div>
-                        <div class="upper-message__date">
-                          ${message.date}
-                          </div>
-                        </div>
-                      <div class="lower-message">
-                          ${message.content}
-                          </div>
-                        <div class="lower-message__image">
-                          ${img}
-                          </div>
-                      </div>`
-      } else if (message.content) {
-        var img = (message.image) ? `<img class="lower-message__image" src= ${ message.image }>` : "";
-        var html = `<div class= "message", data-message-id="${message.id}">
-                      <div class="upper-message">
-                        <div class="upper-message__user-name">
-                          ${message.user_name}
-                          </div>
-                        <div class="upper-message__date">
-                          ${message.date}
-                          </div>
-                        </div>
-                      <div class="lower-message">
-                          ${message.content}
-                          </div>
-                      </div>`
-      } else if (message.image.url) {
-        var img = (message.image) ? `<img class="lower-message__image" src= ${ message.image }>` : "";
-        var html = `<div class= "message", data-message-id="${message.id}">
-                      <div class="upper-message">
-                        <div class="upper-message__user-name">
-                          ${message.user_name}
-                          </div>
-                        <div class="upper-message__date">
-                          ${message.date}
-                          </div>
-                        </div>
-                      <div class="lower-message">
-                        <div class="lower-message__image">
-                          ${img}
-                          </div>
-                      </div>`
-      };
-      return html;
-    };
     var reloadMessages = function() {
       last_message_id = $('.message:last').data("message-id");
         $.ajax({
