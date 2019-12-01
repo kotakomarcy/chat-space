@@ -70,7 +70,9 @@ $(document).on('turbolinks:load', function(){
             alert('自動更新に失敗しました');
           });
         }
-      setInterval(reloadMessages, 7000);
+        setInterval(reloadMessages, 7000);
+    }else{
+      console.log('更新しない')
     };
   })
 });
