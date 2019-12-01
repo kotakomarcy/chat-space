@@ -152,19 +152,19 @@
   height: calc(100vh - 100px);
   background-color: #2f3e51;
   overflow: scroll;
+  text-decoration: none;
 .group{
   color: $white;
   padding: 20px;
+  text-decoration: none;
     &__name{
       font-size: 15px;
       color: $white;
-      text-decoration: none;
     }
     &__message{
       font-size: 11px;
       padding: 5px 0 0 0;
       color: $white;
-      text-decoration: none;
     }
   }
 }
