@@ -63,7 +63,7 @@ $(document).on('turbolinks:load',function() {
     addDeleteUser(userName, userId);
     addMember(userId);
   });
-  $("#user-search-result").on("click", ".chat-group-user__btn--remove", function() {
+  $(document).on("click", ".chat-group-user__btn--remove", function() {
     $(this)
       .parent()
       .remove();
