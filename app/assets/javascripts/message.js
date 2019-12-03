@@ -1,7 +1,6 @@
 $(document).on('turbolinks:load', function(){
   // 非同期通信
   function buildHTML(message){
-    var content = message.content ? `${ message.content }` : "";
     var img = (message.image) ? `<img class="lower-message__image" src= ${ message.image }>` : "";
       var html = `<div class= "message", data-message-id="${message.id}">
                     <div class="upper-message">
@@ -13,7 +12,7 @@ $(document).on('turbolinks:load', function(){
                         </div>
                       </div>
                     <div class="lower-message">
-                        ${content}
+                        ${message.content}
                         </div>
                       <div class="lower-message__image">
                         ${img}
@@ -23,10 +22,9 @@ $(document).on('turbolinks:load', function(){
   }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
-    var formData = new FormData(this);
-    var url = $(this).attr('action')
+    var formData = new FormData($(this).get(0));
     $.ajax({
-      url: url,
+      url: location.href,
       type: 'POST', 
       data: formData,  
       dataType: 'json',
@@ -47,7 +45,6 @@ $(document).on('turbolinks:load', function(){
     });
   });
   // 自動更新
-  $(function(){
     var reloadMessages = function() {
       if (window.location.href.match(/\/groups\/\d+\/messages/)){
         last_message_id = $('.message:last').data("message-id");
@@ -61,7 +58,9 @@ $(document).on('turbolinks:load', function(){
             var insertHTML = '';
               // 取得メッセージを一つずつ抽出
               messages.forEach(function(message){
-                insertHTML = buildHTML(message);
+                if (message.id > last_message_id ) {
+                  insertHTML += buildHTML(message);
+                }
                 $('.messages').append(insertHTML);
                 $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight}, 'fast');
               })
@@ -72,5 +71,4 @@ $(document).on('turbolinks:load', function(){
     }else{
     }};
     setInterval(reloadMessages, 5000);
-  });
 });
