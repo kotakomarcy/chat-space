@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function(){
-  // 非同期通信
   function buildHTML(message){
     var img = (message.image) ? `<img class="lower-message__image" src= ${ message.image }>` : "";
       var html = `<div class= "message", data-message-id="${message.id}">
@@ -20,6 +19,7 @@ $(document).on('turbolinks:load', function(){
                     </div>`
     return html;
   }
+    // 非同期通信
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData($(this).get(0));
@@ -58,9 +58,7 @@ $(document).on('turbolinks:load', function(){
             var insertHTML = '';
               // 取得メッセージを一つずつ抽出
               messages.forEach(function(message){
-                if (message.id > last_message_id ) {
-                  insertHTML += buildHTML(message);
-                }
+                  insertHTML = buildHTML(message);
                 $('.messages').append(insertHTML);
                 $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight}, 'fast');
               })
